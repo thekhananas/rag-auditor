@@ -409,15 +409,14 @@ export default function Auditor() {
                 <p className="font-medium">Average Latency</p>
                 <p>Embed: {benchResult.latency.embedAvgMs.toFixed(0)}ms | Rerank: {benchResult.latency.rerankAvgMs.toFixed(0)}ms | Total: {benchResult.latency.totalAvgMs.toFixed(0)}ms</p>
               </div>
+              {benchResult.aggregate.naive.mrr5 === 1 && benchResult.aggregate.rerank.mrr5 === 1 && (
+                <p className="text-xs text-muted-foreground mt-2">
+                  This dataset is a verbatim match subset. To see rerank’s impact, load a harder, paraphrased benchmark.
+                </p>
+              )}
             </CardContent>
           </Card>
         </motion.div>
-      )}
-
-      {benchResult.aggregate.naive.mrr5 === 1 && benchResult.aggregate.rerank.mrr5 === 1 && (
-        <p className="text-xs text-muted-foreground mt-2">
-          This dataset is a verbatim match subset. To see rerank’s impact, load a harder, paraphrased benchmark.
-        </p>
       )}
     </main>
   );

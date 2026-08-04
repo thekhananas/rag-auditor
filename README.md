@@ -3,6 +3,8 @@
 Side-by-side benchmarking tool that compares naive vector search against Cohere Rerank v3 on a set of document chunks.  
 Displays rank movement, relevance scores, and latency breakdown, so developers can see exactly how cross-encoder reranking changes retrieval results.
 
+## Live - https://rag-auditor.vercel.app/
+
 ## Demo
 
 ![Auditor UI screenshot](public/demo/RAG-Auditor-HomePage-Demo.png)

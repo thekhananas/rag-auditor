@@ -129,3 +129,9 @@ The API route does the heavy lifting: cohere.embed (with inputType: 'search_quer
   }
 }
 ```
+
+Takeaway: Absolute score values cannot be directly compared between Naive Search and Rerank. A 0.237 rerank score means the cross-encoder estimated a ~23.7% probability that Chunk 0 directly answers the user query, whereas 0.422 was simply a vector angle.
+
+Note:
+
+In my benchmarking, vector similarity frequently missed relevant chunks due to lexical mismatch. For example, a candidate chunk ranked outside the top 5 in naive cosine search because its fixed embedding vector drifted. However, Cohere Rerank’s cross-attention layers detected token-level intent overlap and rescued it into position #4. It also demonstrated why raw cosine scores (0.422) shouldn't be confused with calibrated relevance probabilities (0.237).
